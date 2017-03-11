@@ -1,0 +1,149 @@
+.arrow-up{
+	width: 0;
+	height: 0;
+	position: absolute;
+	border-left: 20px solid transparent;
+	border-right:20px solid transparent;
+	border-bottom: 20px solid #fff;
+	right: 10px;
+    top: 50px;
+    display: none;
+}
+.login-form{
+	position: absolute;
+	width: 300px;
+	height: auto;
+	background: #fff;
+	right: 6px;
+	top: 60px;
+	border-radius: 3px;
+	border-bottom: 5px solid gray;
+	display: none;
+}
+.login-form>form{
+	width: 250px;
+	margin: 25px auto;
+	font-size: 20px;
+	font-family: sans-serif,Arial;
+	color:gray;
+	letter-spacing: -0.05em;
+}
+input[type="text"],
+input[type="password"]{
+	width: 240px;
+	height: 30px;
+	border:0px;
+	outline: none;
+	box-shadow: inset 0 0 10px #eee;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	margin-top:5px;
+	font-family: sans-serif,Arial;
+	font-size: 16px;
+}
+input[type="submit"]{
+	width: 95%;
+	height: 35px;
+	background: #0f7aaa;
+	font-size: 16px;
+	font-weight: bold;
+	font-family: sans-serif,Arial;
+	color: white;
+	outline: none;
+	border:0px;
+	border-radius: 3px;
+	letter-spacing: -0.05em;
+	cursor: pointer;
+}
+input[type="submit"]:hover{
+	background: #0a5e84; 
+}
+.fa{
+}
+
+.fa-user{
+	position: absolute;
+	top: 35px;
+	right: 42px;
+}
+
+.fa-lock {
+	position: absolute;
+	top: 80px;
+	right: 42px;
+}
+
+@media(max-width: 480px) {
+	.login-form {
+		width: 260px;
+		top: 160px;
+	}
+
+	.arrow-up {
+		top: 145px;
+	}
+
+	.fa-user, .fa-lock{
+		right: 20px;
+	}
+}
+
+@media(max-width: 640px) {
+	.login-form {
+		width: 310px;
+		top: 160px;
+	}
+
+	.arrow-up {
+		top: 145px;
+	}
+
+	.fa-user, .fa-lock{
+		right: 45px;
+	}
+}
+
+@media(min-width: 640px) {
+	.login-form {
+		width: 310px;
+		top: 160px;
+	}
+
+	.arrow-up {
+		top: 145px;
+	}
+
+	.fa-user, .fa-lock{
+		right: 45px;
+	}
+}
+
+@media (min-width: 768px) {
+    .login-form {
+		width: 310px;
+		top: 160px;
+	}
+
+	.arrow-up {
+		top: 145px;
+	}
+
+	.fa-user, .fa-lock{
+		right: 45px;
+	}
+}
+
+@media (min-width: 1024px) {
+	.login-form {
+		width: 310px;
+		top: 60px;
+	}
+
+	.arrow-up {
+		top: 50px;
+	}
+
+	.fa-user, .fa-lock{
+		right: 42px;
+	}
+}

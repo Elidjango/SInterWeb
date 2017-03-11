@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    
+    <link rel="shortcut icon" href="/static/img/inter.ico">
+
+    <link rel="stylesheet" href="/static/css/front.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/fuente.css">
+    <link rel="stylesheet" href="/static/css/login.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <title>| SINTERWEB |</title>
+</head>
+<body>
+    <header class="header">
+        <div class="contenedor">
+            <h1 class="logo">SInterWeb</h1>
+            <span class="icon-menu" id="btn-menu"></span>
+            <nav class="nav" id="nav">
+                <ul class="menu">
+                    <li class="menu__item"><a class="menu__link select" href=""><span class="fa fa-home"></span>Inicio</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#info"><span class="fa fa-exclamation-circle"></span>Info</a></li>
+                    <li class="menu__item"><a class="menu__link login" href="#"><span class="fa fa-child"></span>Login</a>
+                        <div class="arrow-up"></div>    
+                        </aside>
+                        <div class="login-form">
+                            {% block content %}
+                            <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+                                {% csrf_token %}
+                                <center><div>
+                                    <input type="text" id="id_username" name="username" placeholder="Usuario" required autocomplete="off">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <div>
+                                    <input type="password" id="id_password" name="password" placeholder="Contraseña" required autocomplete="off">
+                                    <i class="fa fa-lock"></i>
+                                </div>
+                                <div>
+                                    <input type="submit" value="Ingresar">
+                                    <input type="hidden" name="next" value="{{ next }}">
+                                </div></center>
+                                <div>
+                                    {% if form.errors %}
+                                        <p style="font-size: 14px; font-weight: 700; display: block; padding: 10px 12px; margin: 0 0 10px 0; margin-top: 4px; color: #ba2121; border: 1px solid #ba2121; border-radius: 4px; background-color: #fff; background-position: 5px 12px;">Por favor, ingrese el nombre de usuario y la clave correctos para obtener cuenta de personal. Observe que ambos campos pueden ser sensibles a mayúsculas.</p>
+                                    {% endif %}
+                                </div>
+                            </form>
+                            {% endblock %}
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="banner">
+        <img src="/static/img/dev2.jpg" alt="" class="banner__img">
+        <div class="contenedor">
+            <h2 class="banner__titulo">La mejor empresa de señal televisora</h2>
+            <p class="banner__txt">¿Que esperas? ¡Pide tu decodificador!</p>
+        </div>
+    </div>
+    <main class="main">
+        <div class="contenedor">
+            <section class="info" id="info">
+                <article class="info__columna">
+                    <img src="/static/img/mision.jpg" alt="" class="info__img">
+                    <h2 class="info__titulo">Misión</h2>
+                    <p class="info__txt">Brindar con excelencia, múltiples servicios de telecomunicaciones, conectando los hogares venezolanos al mundo. Contribuyendo a impulsar el contínuo desarrollo de Venezuela.</p>
+                </article>
+                <article class="info__columna">
+                    <img src="/static/img/vision.jpg" alt="" class="info__img">
+                    <h2 class="info__titulo">Visión</h2>
+                    <p class="info__txt">Liderar el mercado, innovando en tecnología y servicios, superando las expectativas de nuestros clientes. Impulsar el desarrollo integral de nuestro personal, respaldando su accionar con herramientas sofisticadas y actuales. Incrementar en cada periodo la eficiencia de la operación.</p>
+                </article>
+                <article class="info__columna">
+                    <img src="/static/img/qs.jpg" alt="" class="info__img">
+                    <h2 class="info__titulo">¿Quiénes Somos?</h2>
+                    <p class="info__txt">Con el más avanzado servicio de televisión por cable, acceso a Internet y telefonía en toda Venezuela, Inter fue fundada en 1996 bajo el nombre de Intercable en Barquisimeto y se desarrolló como uno de los más ambiciosos proyectos de telecomunicaciones del país, avalado con la más moderna tecnología.
+                    Actualmente cuenta con una Red de más de 4 mil Km de fibra óptica y presencia en más de 100 ciudades del país y más de 1.900.000 hogares.</p>
+                </article>
+            </section>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="social">
+            <a href="#" class="icon-facebook"></a>
+            <a href="#" class="icon-twitter"></a>
+            <a href="#" class="icon-instagram"></a>
+            <a href="#" class="icon-google-plus"></a>
+            <a href="#" class="icon-github"></a>
+        </div>
+        <p class="copy">| &copy;EliDjangoDev 2017 | Programadores U.P.T.P JJ "Montilla" | Todos los derecho reservador |</p>
+    </footer>
+    <script src="/static/js/front.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var arrow = $(".arrow-up");
+            var form = $(".login-form");
+            var status = false;
+            $(".login").click(function(event){
+                event.preventDefault();
+                if(status == false){
+                    arrow.fadeIn();
+                    form.fadeIn();
+                    status = true;
+                }else{
+                    arrow.fadeOut();
+                    form.fadeOut();
+                    status = false;
+                }
+            })
+        })
+    </script>
+</body>
+</html>

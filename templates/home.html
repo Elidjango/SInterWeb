@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    
+    <link rel="shortcut icon" href="/static/img/inter.ico">
+
+    <link rel="stylesheet" href="/static/css/fuente.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/home.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <title>| SINTERWEB |</title>
+</head>
+<body>
+    <div class="menu">
+    {% block usertools %}
+        <ul>
+            <li><a href="/home/"><span class="fa fa-user"></span>Hola {{ user.username }}!</a></li>
+            <li><a href="#"><span class="fa fa-book"></span>Registro <p class="fa fa-ellipsis-v"></p></a>
+                <ul>
+                    <li><a href="/rg_abonado/"><span class="fa fa-share"></span>Abonado</a></li>
+                    <li><a href="/rg_caja/"><span class="fa fa-share"></span>Cajas</a></li>
+                    <li><a href="/rg_servicio/"><span class="fa fa-share"></span>Servicios</a></li>
+                </ul>
+            </li>
+            <li><a href="#"><span class="fa fa-line-chart"></span>Status <p class="fa fa-ellipsis-v"></p></a>
+                <ul>
+                    <li><a href="#"><span class="fa fa-share"></span>Cajas Donadas</a></li>
+                    <li><a href="#"><span class="fa fa-share"></span>Cajas Reparadas</a></li>
+                    <li><a href="#"><span class="fa fa-share"></span>Cajas Reparables</a></li>
+                    <li><a href="#"><span class="fa fa-share"></span>Status Reclamos</a></li>
+                    <li><a href="#"><span class="fa fa-share"></span>Total Cajas</a></li>
+                </ul>
+            </li>
+            <li><a href="#"><span class="fa fa-file-pdf-o"></span>Reportes <p class="fa fa-ellipsis-v"></p></a>
+                <ul>
+                    <li><a href="#"><span class="fa fa-share"></span>Cajas Donadas</a></li>
+                    <li><a href="#"><span class="fa fa-share"></span>Cajas Reparadas</a></li>
+                    <li><a href="#"><span class="fa fa-share"></span>Cajas Reparables</a></li>
+                    <li><a href="#"><span class="fa fa-share"></span>Status Reclamos</a></li>
+                    <li><a href="#"><span class="fa fa-share"></span>Total De Cajas</a></li>
+                    <li><a href="#"><span class="fa fa-share"></span>Cont. Reclamos</a></li>
+                </ul>
+            </li>
+            <li><a href="#"><span class="fa fa-support"></span>Ayuda <p class="fa fa-ellipsis-v"></p></a>
+                <ul>
+                    {% if user.is_superuser %}
+                    <li><a href="/signup/"><span class="fa fa-share"></span>Nuevos Usuarios</a></li>
+                    {% endif %}
+                    <li><a href="#"><span class="fa fa-share"></span>Manual Usuarios</a></li>
+                </ul>
+            </li>
+            <li><a href="/logout/"><span class="fa fa-mail-reply-all"></span>Salir</a></li>
+        </ul>
+    {% endblock %}    
+    </div>
+    
+    <div class="contenedor">
+        <h1>BIENVENIDO/A</h1>
+    </div>
+
+    <footer class="footer">
+        <div class="social">
+            <a href="#" class="icon-facebook"></a>
+            <a href="#" class="icon-twitter"></a>
+            <a href="#" class="icon-instagram"></a>
+            <a href="#" class="icon-google-plus"></a>
+            <a href="#" class="icon-github"></a>
+        </div>
+        <p class="copy">| &copy;EliDjangoDev 2017 | Programadores U.P.T.P JJ "Montilla" | Todos los derecho reservador |</p>
+    </footer>
+</body>
+</html>

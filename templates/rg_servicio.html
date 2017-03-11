@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    
+    <link rel="shortcut icon" href="/static/img/inter.ico">
+
+    <link rel="stylesheet" href="/static/css/fuente.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/home.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/servicio.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/reset.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <title>| SINTERWEB |</title>
+</head>
+<body>
+    <div class="menu">
+    {% block usertools %}
+        <ul>
+            <li><a href="/home/"><span class="fa fa-home"></span>Inicio</a></li>
+            <li><a href="#"><span class="fa fa-book"></span>Registro <p class="fa fa-ellipsis-v"></p></a>
+                <ul>
+                    <li><a href="/rg_abonado/"><span class="fa fa-share"></span>Abonado</a></li>
+                    <li><a href="/rg_caja/"><span class="fa fa-share"></span>Cajas</a></li>
+                    <li><a href="/rg_servicio/"><span class="fa fa-share"></span>Servicios</a></li>
+                </ul>
+            </li>
+            <li><a href="#"><span class="fa fa-line-chart"></span>Status <p class="fa fa-ellipsis-v"></p></a>
+                <ul>
+                    <li><a href="#"><span class="fa fa-share"></span>Cajas Donadas</a></li>
+                    <li><a href="#"><span class="fa fa-share"></span>Cajas Reparadas</a></li>
+                    <li><a href="#"><span class="fa fa-share"></span>Cajas Reparables</a></li>
+                    <li><a href="#"><span class="fa fa-share"></span>Status Reclamos</a></li>
+                    <li><a href="#"><span class="fa fa-share"></span>Total Cajas</a></li>
+                </ul>
+            </li>
+            <li><a href="#"><span class="fa fa-file-pdf-o"></span>Reportes <p class="fa fa-ellipsis-v"></p></a>
+                <ul>
+                    <li><a href="#"><span class="fa fa-share"></span>Cajas Donadas</a></li>
+                    <li><a href="#"><span class="fa fa-share"></span>Cajas Reparadas</a></li>
+                    <li><a href="#"><span class="fa fa-share"></span>Cajas Reparables</a></li>
+                    <li><a href="#"><span class="fa fa-share"></span>Status Reclamos</a></li>
+                    <li><a href="#"><span class="fa fa-share"></span>Total De Cajas</a></li>
+                    <li><a href="#"><span class="fa fa-share"></span>Cont. Reclamos</a></li>
+                </ul>
+            </li>
+            <li><a href="#"><span class="fa fa-support"></span>Ayuda <p class="fa fa-ellipsis-v"></p></a>
+                <ul>
+                    {% if user.is_superuser %}
+                    <li><a href="/signup/"><span class="fa fa-share"></span>Nuevos Usuarios</a></li>
+                    {% endif %}
+                    <li><a href="#"><span class="fa fa-share"></span>Manual Usuarios</a></li>
+                </ul>
+            </li>
+            <li><a href="/logout/"><span class="fa fa-mail-reply-all"></span>Salir</a></li>
+        </ul>
+    {% endblock %}    
+    </div>
+    
+    <div class="contenedor">
+            <div class="input-group">
+                <h2>SERVICIOS <span class="fa fa-commenting"></span></h2>
+            </div>
+            <br>
+            <form class="formulario" name="formulario_registro" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                <div>
+                    <div class="input-group">
+                        <input type="text" id="id_cedula2" name="cedula2" placeholder="Cédula V-12456763 (*)">
+                        <select name="num_abonado3" id="id_num_abonado3">
+                            <option value="">Seleccione el N° Abonado (*)</option>
+                            {% for abonado in data %}
+                            <option value="{{ abonado.pk }}">{{ abonado.num_abonado }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="id_nombre_abo_serv1" name="nombre_abo_serv1" placeholder="Primer Nombre (*)">
+                        <input type="text" id="id_nombre_abo_serv2" name="nombre_abo_serv2" placeholder="Segundo Nombre">
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="id_apellido_abo_serv1" name="apellido_abo_serv1" placeholder="Primer Apellido (*)">
+                        <input type="text" id="id_apellido_abo_serv2" name="apellido_abo_serv2" placeholder="Segundo Apellido">
+                    </div>
+                    <div class="input-group">
+                        <textarea type="text" id="id_direccion_abo_serv" name="direccion_abo_serv" placeholder="Dirección (*)"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <select class="input-100" name="serial2" id="id_serial2">
+                            <option value="">Seleccione el Serial (*)</option>
+                            {% for caja in data %}
+                            <option value="{{ caja.pk }}">{{ caja.serial }}</option>
+                            {% endfor %}
+                        </select>
+                    </div> 
+                    <div class="input-group">
+                        <textarea type="text" id="id_descripcion" name="descripcion" placeholder="Descripción (*)"></textarea>
+                    </div>                      
+                    <div class="input-group">
+                        <input type="submit" value="GUARDAR" onclick='alert("Guardado Exitosamente")'>
+                        <input type="hidden" name="next" value="{{ next }}">
+                        <input class="btn__reset" type="reset" value="LIMPIAR">
+                    </div>    
+                </div>
+            </form>
+            <br><br>
+            <p>_</p>
+    </div>
+
+    <footer class="footer">
+        <div class="social">
+            <a href="#" class="icon-facebook"></a>
+            <a href="#" class="icon-twitter"></a>
+            <a href="#" class="icon-instagram"></a>
+            <a href="#" class="icon-google-plus"></a>
+            <a href="#" class="icon-github"></a>
+        </div>
+        <p class="copy">| &copy;EliDjangoDev 2017 | Programadores U.P.T.P JJ "Montilla" | Todos los derecho reservador |</p>
+    </footer>
+</body>
+</html>
